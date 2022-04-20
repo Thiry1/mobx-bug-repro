@@ -2,11 +2,11 @@ const Store = require("../");
 const { configure } = require("mobx");
 
 describe("Store", () => {
-  describe("run test case with `useProxies: \"never\"`", ()  => {
+  describe("run tests with `useProxies: \"never\"`", ()  => {
     configure({ useProxies: "never" });
-    runTestCases();
+    runTests();
   });
-  describe("run test case with `useProxies: \"always\"`", ()  => {
+  describe("run tests with `useProxies: \"always\"`", ()  => {
     configure({ useProxies: "always" });
     // Case 3 fails.
     // TypeError: Cannot read properties of undefined (reading 'get')
@@ -17,15 +17,12 @@ describe("Store", () => {
     //       14 |   }
     //       15 | }
     //       16 |
-    runTestCases();
+    runTests();
   });
 });
 
-function runTestCases() {
+function runTests() {
   configure({ safeDescriptors: true });
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
 
   const store = new Store({
     key: "foo",
@@ -35,7 +32,7 @@ function runTestCases() {
     expect(store.isFoo).toBe(true);
   });
   it("case2", () => {
-    jest.spyOn(store.state, "key", "get").mockReturnValue("bar");
+    jest.spyOn(store.state, "key", "get").mockReturnValueOnce("bar");
     expect(store.isFoo).toBe(false);
   });
   it("case3(same as case1)", () => {
