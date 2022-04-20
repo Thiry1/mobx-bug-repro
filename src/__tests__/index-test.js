@@ -8,6 +8,15 @@ describe("Store", () => {
   });
   describe("run test case with `useProxies: \"never\"`", ()  => {
     configure({ useProxies: "never" });
+    // Case 3 fails.
+    // TypeError: Cannot read properties of undefined (reading 'get')
+    //       11 |
+    //       12 |   get isFoo() {
+    //     > 13 |     return this.state.foo === "foo";
+    //          |                       ^
+    //       14 |   }
+    //       15 | }
+    //       16 |
     runTestCases();
   });
 });
