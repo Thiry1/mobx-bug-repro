@@ -12,7 +12,7 @@ describe("Store", () => {
     // TypeError: Cannot read properties of undefined (reading 'get')
     //       11 |
     //       12 |   get isFoo() {
-    //     > 13 |     return this.state.foo === "foo";
+    //     > 13 |     return this.state.key === "foo";
     //          |                       ^
     //       14 |   }
     //       15 | }
@@ -28,14 +28,14 @@ function runTestCases() {
   });
 
   const store = new Store({
-    foo: "foo",
+    key: "foo",
   });
 
   it("case1", () => {
     expect(store.isFoo).toBe(true);
   });
   it("case2", () => {
-    jest.spyOn(store.state, "foo", "get").mockReturnValue("bar");
+    jest.spyOn(store.state, "key", "get").mockReturnValue("bar");
     expect(store.isFoo).toBe(false);
   });
   it("case3(same as case1)", () => {

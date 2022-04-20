@@ -1,4 +1,4 @@
-const { makeObservable, observable, computed} = require("mobx");
+const { makeObservable, observable, computed } = require("mobx");
 
 module.exports = class Store {
   constructor(_state) {
@@ -10,6 +10,6 @@ module.exports = class Store {
   }
 
   get isFoo() {
-    return this.state.foo === "foo";
+    return this.state.key === "foo";
   }
 }
