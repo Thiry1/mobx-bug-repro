@@ -33,15 +33,12 @@ function runTestCases() {
 
   it("case1", () => {
     expect(store.isFoo).toBe(true);
-    expect(store.state.foo).toBe("foo");
   });
   it("case2", () => {
     jest.spyOn(store.state, "foo", "get").mockReturnValue("bar");
     expect(store.isFoo).toBe(false);
-    expect(store.state.foo).toBe("bar");
   });
   it("case3(same as case1)", () => {
     expect(store.isFoo).toBe(true);
-    expect(store.state.foo).toBe("foo");
   });
 }
