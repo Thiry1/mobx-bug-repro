@@ -2,12 +2,12 @@ const Store = require("../");
 const { configure } = require("mobx");
 
 describe("Store", () => {
-  describe("run test case with `useProxies: \"always\"`", ()  => {
-    configure({ useProxies: "always" });
-    runTestCases();
-  });
   describe("run test case with `useProxies: \"never\"`", ()  => {
     configure({ useProxies: "never" });
+    runTestCases();
+  });
+  describe("run test case with `useProxies: \"always\"`", ()  => {
+    configure({ useProxies: "always" });
     // Case 3 fails.
     // TypeError: Cannot read properties of undefined (reading 'get')
     //       11 |
